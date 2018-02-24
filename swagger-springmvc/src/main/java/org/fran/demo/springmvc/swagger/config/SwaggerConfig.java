@@ -7,9 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StopWatch;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -19,10 +17,10 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig {
+@EnableWebMvc
+public class SwaggerConfig extends WebMvcConfigurerAdapter {
 	private final Logger logger = LoggerFactory.getLogger(SwaggerConfig.class);
 
 	@Value("#{config['swagger.host']}")
@@ -32,7 +30,6 @@ public class SwaggerConfig {
 	public Docket swaggerSpringfoxDocket() {
 		logger.debug("Starting Swagger");
 		String packagePath = this.getClass().getPackage().getName();
-		packagePath = packagePath.substring(0, packagePath.lastIndexOf("."));
 		packagePath = packagePath.substring(0, packagePath.lastIndexOf("."));
 		logger.debug("base package:" + packagePath);
 		StopWatch watch = new StopWatch();
@@ -72,6 +69,11 @@ public class SwaggerConfig {
 				registry.addMapping("/api/**")
 						.allowedOrigins("*")
 						.allowedMethods("POST","GET","HEAD","OPTIONS");
+			}
+
+			@Override
+			public void addViewControllers(ViewControllerRegistry registry) {
+				registry.addViewController("/").setViewName("redirect:/swagger-ui.html");
 			}
 		};
 	}
