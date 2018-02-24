@@ -1,10 +1,19 @@
 package org.fran.demo.springmvc.swagger.vo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value="RemoveConfigParam",description="search body")
 public class RemoveConfigParam {
+    @ApiModelProperty("search type")
     private int removeType;
+    @ApiModelProperty("search keywords")
     private String key;
+    @ApiModelProperty("search version")
     private String version;
+    @ApiModelProperty("os version")
     private String os;
+    @ApiModelProperty("search channel")
     private String channel;
 
     public int getRemoveType() {

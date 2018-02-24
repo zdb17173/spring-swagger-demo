@@ -1,0 +1,306 @@
+= cms api
+
+
+[[_overview]]
+== Overview
+cms api
+
+
+=== Version information
+[%hardbreaks]
+__Version__ : version
+
+
+=== Contact information
+[%hardbreaks]
+__Contact__ : fran
+__Contact Email__ : zhang.dongbo@cgtn.com
+
+
+=== License information
+[%hardbreaks]
+__License__ : Apache License Version 2.0
+__License URL__ : https://github.com/springfox/springfox/blob/master/LICENSE
+__Terms of service__ : serviceTerms
+
+
+=== URI scheme
+[%hardbreaks]
+__Host__ : localhost:8080
+__BasePath__ : /
+
+
+=== Tags
+
+* TestRestController : test post & get & fileupload
+* TestSecondRestController : test 
+
+
+
+
+[[_paths]]
+== Resources
+
+[[_testrestcontroller_resource]]
+=== TestRestController
+test post & get & fileupload
+
+
+[[_selecttestusingget]]
+==== test get
+....
+GET /api/test/selectList
+....
+
+
+===== Description
+get request parameter in url
+
+
+===== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**id** +
+__optional__|test id|integer (int32)
+|===
+
+
+===== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_jsonresult,JsonResult>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+===== Consumes
+
+* `*/*`
+
+
+===== Produces
+
+* `application/json`
+
+
+[[_firsttestusingpost]]
+==== test post
+....
+POST /api/test/selectString
+....
+
+
+===== Description
+post request parameter in body
+
+
+===== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**baseParam** +
+__required__|baseParam|<<_removeconfigparam,RemoveConfigParam>>
+|===
+
+
+===== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_jsonresult,JsonResult>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+===== Consumes
+
+* `application/json`
+
+
+===== Produces
+
+* `application/json`
+
+
+[[_uploadusingpost]]
+==== test fileupload
+....
+POST /api/test/upload
+....
+
+
+===== Description
+upload use MultipartFile
+
+
+===== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**description** +
+__optional__|file description|string
+|**Query**|**name** +
+__optional__|file name|string
+|**FormData**|**uploadFile** +
+__optional__|uploadFile stream|file
+|===
+
+
+===== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_jsonresult,JsonResult>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+===== Consumes
+
+* `multipart/form-data`
+
+
+===== Produces
+
+* `application/json`
+
+
+[[_testsecondrestcontroller_resource]]
+=== TestSecondRestController
+test
+
+
+[[_firsttestusingpost_1]]
+==== test post
+....
+POST /api/test2/selectString
+....
+
+
+===== Description
+post request parameter in body
+
+
+===== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**baseParam** +
+__required__|baseParam|<<_removeconfigparam,RemoveConfigParam>>
+|===
+
+
+===== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_jsonresult,JsonResult>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+===== Consumes
+
+* `application/json`
+
+
+===== Produces
+
+* `application/json`
+
+
+
+
+[[_definitions]]
+== Definitions
+
+[[_jsonresult]]
+=== JsonResult
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**data** +
+__optional__|object
+|**description** +
+__optional__|string
+|**status** +
+__optional__|integer (int32)
+|===
+
+
+[[_d3fbf3f77926af23f8b9a8580b2dc8e0]]
+=== JsonResult«List«string»»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**data** +
+__optional__|< string > array
+|**description** +
+__optional__|string
+|**status** +
+__optional__|integer (int32)
+|===
+
+
+[[_88203806d86b71eedb6f146d7c7d9ad2]]
+=== JsonResult«string»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**data** +
+__optional__|string
+|**description** +
+__optional__|string
+|**status** +
+__optional__|integer (int32)
+|===
+
+
+[[_removeconfigparam]]
+=== RemoveConfigParam
+search body
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**channel** +
+__optional__|search channel|string
+|**key** +
+__optional__|search keywords|string
+|**os** +
+__optional__|os version|string
+|**removeType** +
+__optional__|search type|integer (int32)
+|**version** +
+__optional__|search version|string
+|===
+
+
+
+
+
